@@ -1,0 +1,82 @@
+---
+title: "Pretest"
+subtitle: "Gewinnen die umsatzstärksten Agenturen auch PR-Preise"
+author: "Fifth Harmony"
+date: '2022-06-22'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(igraph)
+```
+
+# Link auf Github
+
+Unter diesem Link ist der Github-Account: (https://github.com/lg084/Pretest) auf meinem Github-Account hinterlegt.
+
+# Codebuch
+
+Das Codebuch ist unter diesem Link (https://raw.githubusercontent.com/lg084/Pretest/main/README.md) auf meinem Github-Account hinterlegt.
+
+
+```{r Netzwerk einlesen}
+
+# Programmbibliothek laden
+library(igraph)
+
+# Einlesen der Edge- und Nodelist
+edges <- read.csv("https://raw.githubusercontent.com/lg084/Pretest/main/Pretest_Edgelist.csv", header=T, as.is=T, sep = ",")
+
+nodes <- read.csv("https://raw.githubusercontent.com/lg084/Pretest/main/Pretest_Nodelist.csv", header=T, as.is=T, sep = ",")
+
+# Matrix erstellen
+edgematrix <-as.matrix(edges)
+
+# Zusammenführen von Edge- und Nodelist als igraph-Objekt s
+PT <- graph_from_data_frame(d=edgematrix, directed=F)
+PT
+```
+
+## Datensatz vorbereiten
+
+```{r Netzwerk analysieren, fig.height=6, fig.width=9}
+PT
+
+plot(PT,
+     asp=0,
+     layout=layout_nicely,
+     rescale=TRUE,
+     vertex.size=degree(PT)*2,
+     vertex.frame.color="black",
+     vertex.color="red",
+     edge.color="black",
+     edge.arrow.size=.2,
+     main="Pretest",
+     sub="Visualisierung nach Preisträgern")
+
+```
+
+
+#Fragen 
+
+1) welche Herausforderungen Sie beim Pretest hatten (z.B. Auswahl des Samples)
+
+Die größte Herausforderung war die Recherche nach den Daten, da diese einzeln rausgesucht und zusammen getragen werden mussten.
+
+2) welche Edge-Attribute für Sie besonders wichtig sind (denken Sie hier auch an das    Filtern von Netzwerken)
+
+Das Gewicht bzw. der Rang bei den einzelnen Preisen ist uns besonders wichtig.
+
+3) welche Node-Attribute besonders relevant sind (auch hier: Teilnetzwerke)
+
+Bei den Node-Attributen legen wir unser Augenmerk auf die Größe bzw. den Umsatz, da wir eine Verbindung zwischen diesem und den gewonnen Preisen suchen.
+
+4) wie der Aufwand der Datenerhebung war
+
+Die Datenerhebung war sehr aufwändig, da wir die Informationen für die Edgelist einzeln zusammentragen mussten. Das hat uns fast zwei Stunden gekostet und den Großteil des Aufwands ausgemacht.
+
+
+5) auf was Sie besonders achten müssen bei der Datenerhebung
+
+Der Aufbau der Gewinnerlisten der einzelnen Preise ist sehr unterschiedlich. Deshalb müssen wir diese immer einzeln neu betrachten.
