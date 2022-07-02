@@ -1,0 +1,17 @@
+# Codebuch		
+## Edgelist		
+
+from - Kreativpreis	
+to	- Agentur	
+weight	- Anzahl gewonnener Preise
+season	- Jahr
+		
+## Nodelist		
+
+id - Abkürzung von Agenturname / Kreativpreis
+name	- Agenturname / Kreativpreis
+shortname - gekürzter Agenturname / Kreativpreis
+kategorie - Unterkategorie des Preises
+city - Standort des Agenturhauptsitzes
+größe - Gesamtumsatz im jeweiligen Jahr in Mio. Euro 
+type	1= Agentur, 2= Preis
