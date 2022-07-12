@@ -1,10 +1,12 @@
 # Codebuch		
 ## Edgelist		
 
-from - Kreativpreis	
-to	- Agentur	
-weight	- Anzahl gewonnener Preise
-season	- Jahr
+from: Kreativpreis	
+to: Agentur	
+relation:
+ 1 = Gewinner
+ 2 = Finalisten 
+season: 2019 - 2022
 		
 ## Nodelist		
 
